@@ -1,0 +1,17 @@
+.list {
+  background-color: #f1f2f4;
+  border-radius: 12px;
+  box-shadow: 0px 1px 1px #091e4240;
+  color: #44546f;
+  width: 272px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 272px;
+  align-self: start;
+  padding-bottom: 8px;
+  position: relative;
+}

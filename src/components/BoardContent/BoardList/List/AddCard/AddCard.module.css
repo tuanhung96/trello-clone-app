@@ -1,0 +1,81 @@
+.add-card-btn-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 0;
+}
+
+.add-card-btn-div .add-cart-btn {
+  border: none;
+  color: #44546f;
+  padding: 6px 12px 6px 8px;
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  /* align-items: center; */
+  justify-content: flex-start;
+  flex-grow: 1;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.cadd-card-btn-div .add-cart-btn:hover {
+  background-color: #adb5bd;
+}
+
+.add-card-form {
+  padding: 8px;
+  width: 272px;
+  /* border: none; */
+  /* background: none; */
+}
+
+.add-card-form .text-add-card-form {
+  font-family: "roboto";
+  background-color: #ffffff;
+  box-shadow: 0px 1px 1px #091e4240;
+  border-radius: 8px;
+  border: none;
+  height: 54px;
+  height: auto;
+  max-height: 162px;
+  min-height: 54px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  padding: 8px 12px;
+  resize: none;
+  width: 100%;
+  outline: none;
+  line-height: 1rem;
+}
+
+.add-card-form .btns {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  border-radius: 4px;
+}
+
+.add-card-form .add-btn {
+  background-color: #0c66e4;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: white;
+}
+
+.add-card-form .close-card-btn {
+  border: none;
+  /* background-color: transparent; */
+  /* box-shadow: none; */
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}

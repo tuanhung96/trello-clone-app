@@ -1,0 +1,12 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  height: 100%;
+  z-index: 1;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

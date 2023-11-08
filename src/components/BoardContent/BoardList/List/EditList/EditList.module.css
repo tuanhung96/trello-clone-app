@@ -1,0 +1,75 @@
+.edit-list-container {
+  position: absolute;
+  right: -310px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 12px #091e4226;
+  overflow: hidden;
+  width: 300px;
+  z-index: 50;
+}
+
+.edit-list-container .pop-over-header {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.edit-list-container .pop-over-header .pop-over-header-title {
+  color: #44546f;
+  display: block;
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  height: 40px;
+  overflow: hidden;
+  padding: 8px 32px;
+  z-index: 1;
+}
+
+.edit-list-container .pop-over-header .pop-over-header-close-btn {
+  border-radius: 8px;
+  grid-column: 3;
+  grid-row: 1;
+  z-index: 2;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.edit-list-container .pop-over-header .pop-over-header-close-btn:hover {
+  background-color: #dde1e6;
+}
+
+.edit-list-container .pop-over-content {
+  max-height: 256px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 12px 12px;
+}
+
+.edit-list-container .pop-over-content .pop-over-list {
+  list-style: none;
+}
+
+.edit-list-container .pop-over-content li a {
+  color: #172b4d;
+  cursor: pointer;
+  display: block;
+  font-weight: 300;
+  margin: 0 -12px;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
+.edit-list-container .pop-over-content li a:hover {
+  background-color: #dde1e6;
+}
+
+.edit-list-container .pop-over-content hr {
+  margin: 8px 0;
+}

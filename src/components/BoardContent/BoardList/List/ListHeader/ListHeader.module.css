@@ -1,0 +1,69 @@
+.list-header {
+  padding: 8px 8px 0;
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  flex-grow: 0;
+  flex-basis: 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-flow: wrap;
+  position: relative;
+}
+
+.list-name {
+  color: #44546f;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: center;
+  position: relative;
+}
+
+.list-title {
+  /* display: block; */
+  padding: 6px 8px 6px 12px;
+  cursor: pointer;
+  /* overflow: hidden;
+  overflow-wrap: anywhere; */
+}
+
+.list-header .list-name textarea {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 32px;
+  padding: 6px 8px 6px 12px;
+  width: 100%;
+  z-index: -1;
+  border-radius: 8px;
+  font-family: "roboto";
+  border: none;
+  resize: none;
+  /* overflow: hidden;
+  overflow-wrap: break-word; */
+}
+
+.list-header .list-name textarea:focus {
+  background-color: #fff;
+}
+
+.list-header .list-name .show-textarea {
+  position: static;
+  z-index: 0;
+}
+
+.list-header .edit-list-btn {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

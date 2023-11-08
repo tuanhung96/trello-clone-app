@@ -1,13 +1,33 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Roboto", sans-serif;
+  color: #172b4d;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#root {
+  height: 100vh;
+  background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1440x1920/4a2b90ac92108c6e06882f735d6b44d6/photo-1696144706485-ff7825ec8481.jpg);
+  background-size: cover;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+button {
+  border: none;
+  color: #44546f;
+  cursor: pointer;
+}
+
+.dragging {
+  opacity: 0.6;
 }

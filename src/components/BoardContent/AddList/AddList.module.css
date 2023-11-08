@@ -1,0 +1,75 @@
+.add-list-btn {
+  display: flex;
+  gap: 8px;
+  color: #172b4d;
+  width: 272px;
+  background-color: #ffffff3d;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.add-list-btn:hover {
+  background-color: #ffffff21;
+}
+
+.add-list-form {
+  border-radius: 12px;
+  padding: 8px;
+  width: 272px;
+  background-color: #ebecf0;
+  box-shadow: 0px 1px 1px #091e4240;
+}
+
+.add-list-form .text-add-list-form {
+  height: 32px;
+  background: none;
+  border: none;
+  /* border-radius: 4px; */
+  /* box-shadow: none; */
+  color: #172b4d;
+  font-family: "roboto";
+  font-weight: 500;
+  height: 28px;
+  max-height: 256px;
+  min-height: 20px;
+  padding: 6px 12px;
+  /* overflow: hidden;
+  overflow-wrap: break-word; */
+  resize: none;
+  width: 100%;
+}
+
+.add-list-form .btns {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  border-radius: 4px;
+}
+
+.add-list-form .add-btn {
+  background-color: #0c66e4;
+  /* box-shadow: none; */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: white;
+}
+
+.add-list-form .close-list-btn {
+  border: none;
+  /* background-color: transparent; */
+  /* box-shadow: none; */
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}

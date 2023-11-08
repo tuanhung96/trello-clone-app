@@ -17,6 +17,9 @@ function AddCard({ list, cards, setCards }) {
     setCards((cards) => [...cards, card]);
     setCardTitle("");
   }
+  function handleAddCardByEnter(e) {
+    if (e.key === "Enter") handleAddCard(e);
+  }
   return (
     <div>
       <div
@@ -96,6 +99,7 @@ function AddCard({ list, cards, setCards }) {
             placeholder="Enter a title for this card…"
             value={cardTitle}
             onChange={(e) => setCardTitle(e.target.value)}
+            onKeyPress={handleAddCardByEnter}
           ></textarea>
 
           <div className={styles["btns"]}>

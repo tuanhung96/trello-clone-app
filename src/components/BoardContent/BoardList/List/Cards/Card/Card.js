@@ -16,6 +16,9 @@ function Card({ card }) {
   function handleDragStartOrEnd() {
     setIsDragging((isDragging) => !isDragging);
   }
+  function handleEditCardByEnter(e) {
+    if (e.key === "Enter") handleEditCard(e);
+  }
   return (
     <li
       className={"draggable-card" + " " + (isDragging ? "dragging" : "")}
@@ -85,6 +88,7 @@ function Card({ card }) {
                 className={styles["text-edit-card-form"]}
                 value={cardTitle}
                 onChange={(e) => setCardTitle(e.target.value)}
+                onKeyPress={handleEditCardByEnter}
               ></textarea>
             </div>
             <button className={styles["save-btn"]} type="submit">

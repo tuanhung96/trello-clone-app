@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ListHeader.module.css";
 
 function ListHeader({ list, handleShowEditList }) {
@@ -9,12 +9,37 @@ function ListHeader({ list, handleShowEditList }) {
       setEditListHeader((editListHeader) => !editListHeader);
     }
   }
+  useEffect(
+    function () {
+      function callback(e) {
+        const text = document.querySelector(`.show-textarea${list.id}`);
+        if (text !== null) {
+          const box = text.getBoundingClientRect();
+          if (
+            e.clientX < box.left ||
+            e.clientX > box.right ||
+            e.clientY < box.top ||
+            e.clientY > box.bottom
+          )
+            setEditListHeader((editListHeader) => !editListHeader);
+        }
+      }
+      document.addEventListener("click", callback);
+
+      return function () {
+        document.removeEventListener("click", callback);
+      };
+    },
+    [list.id]
+  );
   return (
     <div className={styles["list-header"]}>
       <div className={styles["list-name"]}>
         {editListHeader ? (
           <textarea
-            className={styles["show-textarea"]}
+            className={
+              styles["show-textarea"] + " " + `show-textarea${list.id}`
+            }
             spellcheck="false"
             autoFocus
             value={listTitle}

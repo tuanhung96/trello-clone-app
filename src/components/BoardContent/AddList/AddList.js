@@ -18,6 +18,9 @@ function AddList({ lists, setLists }) {
     setLists((lists) => [...lists, list]);
     setListTitle("");
   }
+  function handleAddListByEnter(e) {
+    if (e.key === "Enter") handleAddList(e);
+  }
 
   return (
     <div class="add-container">
@@ -51,6 +54,7 @@ function AddList({ lists, setLists }) {
             placeholder="Enter list title…"
             value={listTitle}
             onChange={(e) => setListTitle(e.target.value)}
+            onKeyPress={handleAddListByEnter}
           ></textarea>
           <div className={styles["btns"]}>
             <button className={styles["add-btn"]} type="submit">

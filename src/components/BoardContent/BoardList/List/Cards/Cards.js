@@ -1,47 +1,52 @@
+import React from "react";
 import Card from "./Card/Card";
 import styles from "./Cards.module.css";
+import { cloneDeep, isEqual } from "lodash";
 
-function Cards({ list, cards }) {
-  function handleDragOver(e) {
-    e.preventDefault();
+function Cards({
+  boardRef,
+  setBoard,
+  list,
+  handleDragCardStart,
+  handleDragCardEnd,
+  handleDragOverCards,
+  handleDropCard,
+  handleDragEnter,
+}) {
+  const cards = order(list.cards, list.cardIds, "_id");
 
-    const currCard = document.querySelector(".dragging");
-    if (currCard.classList.contains("draggable-list")) return;
-
-    const zone = document.getElementById(list.id);
-    if (currCard.classList.contains("draggable-card") && e.target === zone) {
-      const bottomCard = insertAboveCard(zone, e.clientY);
-
-      if (!bottomCard) {
-        zone.append(currCard);
-      } else {
-        zone.insertBefore(currCard, bottomCard);
-      }
-    }
-  }
-
-  function insertAboveCard(zone, mouseY) {
-    const cards = zone.querySelectorAll(".draggable-card:not(.dragging)");
-    let closestCard = null;
-    let closestOffset = Number.NEGATIVE_INFINITY;
-    cards.forEach((card) => {
-      const box = card.getBoundingClientRect();
-      const offset = mouseY - box.top - box.height / 2;
-      if (offset < 0 && offset > closestOffset) {
-        closestOffset = offset;
-        closestCard = card;
-      }
+  function order(originalArr, orderArr, key) {
+    const cloneArr = cloneDeep(originalArr);
+    const orderedArr = cloneArr.sort((a, b) => {
+      return orderArr.indexOf(a[key]) - orderArr.indexOf(b[key]);
     });
-    return closestCard;
+    return orderedArr;
   }
+
+  ////////////////
 
   return (
-    <ol id={list.id} className={styles["cards"]} onDragOver={handleDragOver}>
+    <ol
+      id={list._id}
+      data-list-id={list._id}
+      className={styles["cards"]}
+      onDragOver={(e) => handleDragOverCards(e)}
+      onDrop={(e) => handleDropCard(e)}
+      onDragEnter={(e) => handleDragEnter(e)}
+    >
       {cards.map((card) => (
-        <Card card={card} key={card.id} />
+        <Card
+          boardRef={boardRef}
+          setBoard={setBoard}
+          card={card}
+          listId={list._id}
+          key={card._id.toString()}
+          handleDragCardStart={handleDragCardStart}
+          handleDragCardEnd={handleDragCardEnd}
+        />
       ))}
     </ol>
   );
 }
 
-export default Cards;
+export default React.memo(Cards, isEqual);

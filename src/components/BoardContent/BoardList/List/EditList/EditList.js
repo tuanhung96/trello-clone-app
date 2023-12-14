@@ -1,6 +1,27 @@
 import styles from "./EditList.module.css";
+import { deleteListById } from "../../../../../apis/api";
+import CloseIcon from "../../../../../icon/CloseIcon";
+import { cloneDeep, isEqual } from "lodash";
+import React from "react";
 
-function EditList({ handleShowEditList }) {
+function EditList({ boardRef, setBoard, listId, handleShowEditList }) {
+  function handleDeleteList() {
+    // delete list by id in DB
+    deleteListById(listId);
+
+    // update listIds of board
+    const board = cloneDeep(boardRef.current);
+    const newBoard = {
+      ...board,
+      listIds: board.listIds.filter(
+        (id) => id.toString() !== listId.toString()
+      ),
+      lists: board.lists.filter(
+        (list) => list._id.toString() !== listId.toString()
+      ),
+    };
+    setBoard(newBoard);
+  }
   return (
     <div className={styles["edit-list-container"]}>
       <div className={styles["edit-list-modal"]}>
@@ -10,23 +31,7 @@ function EditList({ handleShowEditList }) {
             className={styles["pop-over-header-close-btn"]}
             onClick={handleShowEditList}
           >
-            <svg
-              class="pop-over-close-icon"
-              width="16"
-              height="16"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                class="pop-over-close-icon"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <CloseIcon />
           </button>
         </div>
         <div className={styles["pop-over-content"]}>
@@ -55,7 +60,7 @@ function EditList({ handleShowEditList }) {
 
           <ul className={styles["pop-over-list"]}>
             <li>
-              <a>Archive this list</a>
+              <a onClick={handleDeleteList}>Archive this list</a>
             </li>
           </ul>
         </div>
@@ -64,4 +69,4 @@ function EditList({ handleShowEditList }) {
   );
 }
 
-export default EditList;
+export default React.memo(EditList, isEqual);

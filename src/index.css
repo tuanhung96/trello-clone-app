@@ -15,6 +15,8 @@ body {
   height: 100vh;
   background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1440x1920/4a2b90ac92108c6e06882f735d6b44d6/photo-1696144706485-ff7825ec8481.jpg);
   background-size: cover;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .hidden {
@@ -30,4 +32,6 @@ button {
 
 .dragging {
   opacity: 0.6;
+  border: 0.5px solid #000;
+  border-radius: 8px;
 }

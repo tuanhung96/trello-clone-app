@@ -3,40 +3,77 @@ import ListHeader from "./ListHeader/ListHeader.js";
 import Cards from "./Cards/Cards.js";
 import AddCard from "./AddCard/AddCard.js";
 import EditList from "./EditList/EditList.js";
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { isEqual } from "lodash";
 
-function List({ list }) {
+function List({
+  boardRef,
+  setBoard,
+  list,
+  handleDragCardStart,
+  handleDragCardEnd,
+  handleDragOverCards,
+  handleDropCard,
+  handleDragEnter,
+}) {
   const [showEditList, setShowEditList] = useState(false);
-  const [cards, setCards] = useState(list.cards);
   const [isDragging, setIsDragging] = useState(false);
 
-  function handleShowEditList() {
+  const handleShowEditList = useCallback(() => {
     setShowEditList((showEditList) => !showEditList);
-  }
-  function handleDragStartOrEnd(e) {
+  }, []);
+
+  const handleDragStartOrEnd = useCallback((e) => {
     if (e.target.classList.contains("draggable-list"))
       setIsDragging((isDragging) => !isDragging);
-  }
+  }, []);
 
-  return (
+  return list ? (
     <li
       draggable="true"
-      className={"draggable-list" + " " + (isDragging ? "dragging" : "")}
+      data-list-id={list._id.toString()}
+      className={`draggable-list ${isDragging ? "dragging" : ""}`}
       onDragStart={handleDragStartOrEnd}
       onDragEnd={handleDragStartOrEnd}
     >
       <div className={styles["list"]}>
-        <ListHeader list={list} handleShowEditList={handleShowEditList} />
-        <Cards list={list} cards={cards}></Cards>
-        <AddCard list={list} cards={cards} setCards={setCards}></AddCard>
+        <ListHeader
+          boardRef={boardRef}
+          setBoard={setBoard}
+          listId={list._id}
+          title={list.title}
+          handleShowEditList={handleShowEditList}
+        />
+        <Cards
+          boardRef={boardRef}
+          setBoard={setBoard}
+          list={list}
+          handleDragCardStart={handleDragCardStart}
+          handleDragCardEnd={handleDragCardEnd}
+          handleDragOverCards={handleDragOverCards}
+          handleDropCard={handleDropCard}
+          handleDragEnter={handleDragEnter}
+        />
+        <AddCard
+          boardRef={boardRef}
+          setBoard={setBoard}
+          listId={list._id.toString()}
+        />
         {showEditList ? (
-          <EditList handleShowEditList={handleShowEditList} />
+          <EditList
+            boardRef={boardRef}
+            setBoard={setBoard}
+            listId={list._id.toString()}
+            handleShowEditList={handleShowEditList}
+          />
         ) : (
           <></>
         )}
       </div>
     </li>
+  ) : (
+    <></>
   );
 }
 
-export default List;
+export default React.memo(List, isEqual);

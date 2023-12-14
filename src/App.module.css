@@ -1,0 +1,5 @@
+.board-container {
+  height: 100%;
+  display: flex;
+  margin: 4rem 1rem 0.5rem 0;
+}

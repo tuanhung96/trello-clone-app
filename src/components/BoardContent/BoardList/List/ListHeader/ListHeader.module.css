@@ -59,9 +59,9 @@
   flex-shrink: 0;
   padding: 8px;
   border-radius: 8px;
-  background-color: transparent;
+  /* background-color: transparent; 
   border: none;
-  box-shadow: none;
+  box-shadow: none; */
   display: inline-flex;
   align-items: center;
   justify-content: center;
